@@ -80,7 +80,11 @@ const RecoveryForm = () => {
             Зарегистрироваться
           </Link>
         </div>
-        <Button type="submit" className="w-full cursor-pointer">
+        <Button
+          type="submit"
+          className="w-full cursor-pointer"
+          disabled={loading}
+        >
           {loading ? (
             <LoaderComponent title={"Восстанавливаем пароль..."} />
           ) : (

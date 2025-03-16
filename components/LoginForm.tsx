@@ -93,7 +93,11 @@ const LoginForm = () => {
         {error && (
           <div className="text-sm text-center text-red-500">{error}</div>
         )}
-        <Button type="submit" className="w-full cursor-pointer">
+        <Button
+          type="submit"
+          className="w-full cursor-pointer"
+          disabled={loading}
+        >
           {loading ? <LoaderComponent title={"Входим..."} /> : "Войти"}
         </Button>
       </div>

@@ -119,7 +119,7 @@ const SignUpForm = () => {
         {error && (
           <div className="text-sm text-center text-red-500">{error}</div>
         )}
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" disabled={loading}>
           {loading ? (
             <LoaderComponent title={"Регистрируем..."} />
           ) : (

@@ -4,7 +4,10 @@ import { inter } from "@/utils/fonts";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Swift Message",
+  title: {
+    default: "Swift Message",
+    template: "%s | Swift Message",
+  },
   description:
     "Swift Message — современный чат для мгновенного обмена сообщениями. Простота, скорость и надёжность.",
 };
