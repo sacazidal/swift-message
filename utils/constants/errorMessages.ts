@@ -1,5 +1,5 @@
 export const ERROR_MESSAGES = {
-  EMAIL_REQUIRED: "Почта обязательно для заполнения",
+  EMAIL_REQUIRED: "Почта обязательна для заполнения",
   EMAIL_INVALID: "Неверный формат почты",
   USERNAME_REQUIRED: "Имя пользователя обязательно для заполнения",
   USERNAME_INVALID:

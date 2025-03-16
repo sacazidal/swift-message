@@ -1,1 +1,1 @@
-export const validPaths = ["/", "/login", "/signup"];
+export const validPaths = ["/", "/login", "/signup", "/recovery"];

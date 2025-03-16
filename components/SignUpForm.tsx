@@ -53,7 +53,7 @@ const SignUpForm = () => {
       }
       push("/login");
     } catch {
-      setError("Произошла ошибка");
+      setError("Ошибка при регистрации");
       return;
     } finally {
       setLoading(false);
@@ -117,7 +117,7 @@ const SignUpForm = () => {
           />
         </div>
         {error && (
-          <div className="text-sm text-center text-red-600">{error}</div>
+          <div className="text-sm text-center text-red-500">{error}</div>
         )}
         <Button type="submit" className="w-full">
           {loading ? (

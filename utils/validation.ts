@@ -66,3 +66,12 @@ export const validationLog = (
 
   return null;
 };
+
+export const validationRecovery = (
+  email: string | undefined
+): string | null => {
+  const emailError = validateEmail(email);
+  if (emailError) return emailError;
+
+  return null;
+};

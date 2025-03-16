@@ -43,7 +43,7 @@ const LoginForm = () => {
       }
       replace("/");
     } catch {
-      setError("Неверный логин или пароль");
+      setError("Ошибка при входе");
     } finally {
       setLoading(false);
     }
@@ -75,7 +75,7 @@ const LoginForm = () => {
           <div className="flex items-center">
             <Label htmlFor="password">Пароль</Label>
             <Link
-              href="#"
+              href="/recovery"
               className="ml-auto text-sm underline-offset-4 hover:underline"
             >
               Забыли пароль?
@@ -91,7 +91,7 @@ const LoginForm = () => {
           />
         </div>
         {error && (
-          <div className="text-sm text-center text-red-600">{error}</div>
+          <div className="text-sm text-center text-red-500">{error}</div>
         )}
         <Button type="submit" className="w-full cursor-pointer">
           {loading ? <LoaderComponent title={"Входим..."} /> : "Войти"}
