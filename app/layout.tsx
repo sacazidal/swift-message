@@ -4,8 +4,9 @@ import { inter } from "@/utils/fonts";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "SwiftMessage",
-  description: "Real-time chat",
+  title: "Swift Message",
+  description:
+    "Swift Message — современный чат для мгновенного обмена сообщениями. Простота, скорость и надёжность.",
 };
 
 export default function RootLayout({

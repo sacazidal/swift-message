@@ -3,7 +3,7 @@ import { logErrorToDatabase } from "./logger";
 
 export async function logLogin(userId: number, ipAddress: string) {
   try {
-    await prisma.LoginLog.create({
+    await prisma.loginLog.create({
       data: {
         userId,
         ipAddress,
