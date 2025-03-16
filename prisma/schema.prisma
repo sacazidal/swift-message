@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  Int                   @id @default(autoincrement())
+  email               String                @unique
+  username            String                @unique
+  password            String
+  createdAt           DateTime              @default(now()) @map("created_at")
+  updateOn            DateTime              @default(now()) @map("update_on")
+  messages            Message[]
+  status              UserStatus[]
+  ipAddress           LoginLog[]
+  ConfirmRegistration ConfirmRegistration[]
+  UserLog             UserLog[]
+
+  @@index([username])
+  @@map("users")
+}
+
+model UserLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+  ipAddress String
+  createdAt DateTime @default(now()) @map("created_at")
+  updateOn  DateTime @default(now()) @map("update_on")
+
+  @@map("user_logs")
+}
+
+model ConfirmRegistration {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  user        User     @relation(fields: [userId], references: [id])
+  code        String
+  isConfirmed Boolean  @default(false) @map("is_confirmed")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updateOn    DateTime @default(now()) @map("update_on")
+
+  @@map("confirm_registration")
+}
+
+model Message {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  user        User     @relation(fields: [userId], references: [id])
+  content     String
+  image_url   String?
+  isPublished Boolean  @default(false) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updateOn    DateTime @default(now()) @map("update_on")
+
+  @@index([content, userId])
+  @@map("messages")
+}
+
+model UserStatus {
+  id       Int      @id @default(autoincrement())
+  userId   Int      @map("user_id")
+  user     User     @relation(fields: [userId], references: [id])
+  status   String   @default("offline")
+  lastSeen DateTime @default(now()) @map("last_seen")
+
+  @@index([userId])
+  @@map("user_statuses")
+}
+
+model ErrorLog {
+  id        Int      @id @default(autoincrement())
+  message   String
+  timestamp DateTime @default(now())
+  stack     String?
+
+  @@map("error_log")
+}
+
+model LoginLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+  ipAddress String   @map("ip_address")
+  timestamp DateTime @default(now())
+
+  @@index([userId])
+  @@map("login_logs")
+}
